@@ -1,4 +1,4 @@
-{% load static %}
+ {% extends 'base.html' %} {% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -7,15 +7,23 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
+{% block content %}
+<div class="row m-0 p-0">
 
-{% extends 'base.html' %} {% block content %}
-<div class="post-entry">
-    <h2 class="post-title">{{ post.title }}</h2>
-    <p>{{ post.body }}</p>
+    <div class="col-md-6 ml-md-auto mr-md-auto">
+        <div class="post-entry">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <p>{{ post.body }}</p>
+        </div>
+    </div>
 </div>
-<p><a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a></p>
-<p><a href="{% url 'post_delete' post.pk %}">+ Delete Blog Post</a></p>
-{% endblock content %}
+
+<div class="text-center">
+    <a class="btn btn-sm btn-primary text-white mr-3 mb-5" href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a>
+    <a class="btn btn-sm btn-danger mb-5" href="{% url 'post_delete' post.pk %}">Delete Blog Post</a> {% endblock content %}
+
+</div>
+
 
 
 </html>

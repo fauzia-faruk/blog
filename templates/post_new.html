@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 
-{% extends 'base.html' %} {% block content %}
-<h1>New post</h1>
-<form action="" method="post">{% csrf_token %} {{ form.as_p }}
-    <input type="submit" value="Save" />
-</form>
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="row m-0 p-0">
+
+    <div class="col-md-6 ml-md-auto mr-md-auto">
+        <h1>New post</h1>
+        <form action="" method="post">{% csrf_token %} {{ form|crispy }}
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+</div>
 {% endblock content %}
 
 </html>
